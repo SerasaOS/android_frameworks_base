@@ -7444,5 +7444,15 @@ message MetricsEvent {
     // ---- End Q Constants, all Q constants go above this line ----
     // Add new aosp constants above this line.
     // END OF AOSP CONSTANTS
+
+    // CustomSettings constant
+    CUSTOM_SETTINGS = 1999;
+
+    // Custom constant
+    CUSTOM = 2000;
+
+    // MorbidSettings constant
+    MORBID = 2001;
+
   }
 }
