@@ -1632,3 +1632,5 @@ UnflaggedApi: android.widget.WallpaperView#WallpaperView(android.content.Context
     New API must be flagged with @FlaggedApi: constructor android.widget.WallpaperView(android.content.Context,android.util.AttributeSet,int)
 UnflaggedApi: android.widget.WallpaperView#onSizeChanged(int, int, int, int):
     New API must be flagged with @FlaggedApi: method android.widget.WallpaperView.onSizeChanged(int,int,int,int)
+UnflaggedApi: android.provider.Settings.Secure#TETHERING_ALLOW_VPN_UPSTREAMS:
+    New API must be flagged with @FlaggedApi: field android.provider.Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS
