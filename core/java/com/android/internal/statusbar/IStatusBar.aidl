@@ -388,4 +388,6 @@ oneway interface IStatusBar
     void enterDesktop(int displayId);
 
     void toggleCameraFlash();
+
+    void killForegroundApp();
 }
