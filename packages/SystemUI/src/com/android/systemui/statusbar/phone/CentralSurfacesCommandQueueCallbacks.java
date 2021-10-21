@@ -147,6 +147,7 @@ public class CentralSurfacesCommandQueueCallbacks implements CommandQueue.Callba
             QSHost qsHost,
             ActivityStarter activityStarter,
             TaskHelper taskHelper) {
+
         mCentralSurfaces = centralSurfaces;
         mQsController = quickSettingsController;
         mContext = context;
@@ -507,13 +508,6 @@ public class CentralSurfacesCommandQueueCallbacks implements CommandQueue.Callba
     }
 
     @Override
-    public void toggleCameraFlash() {
-        if (mFlashlightController.isAvailable()) {
-            mFlashlightController.setFlashlight(!mFlashlightController.isEnabled());
-        }
-    }
-
-    @Override
     public void toggleSettingsPanel() {
         if (mShadeViewController.isPanelExpanded()) {
             mShadeController.animateCollapseShade();
@@ -570,5 +564,12 @@ public class CentralSurfacesCommandQueueCallbacks implements CommandQueue.Callba
         mShadeViewController.performHapticFeedback(
                 HapticFeedbackConstants.GESTURE_START
         );
+    }
+
+    @Override
+    public void toggleCameraFlash() {
+        if (mFlashlightController.isAvailable()) {
+            mFlashlightController.setFlashlight(!mFlashlightController.isEnabled());
+        }
     }
 }

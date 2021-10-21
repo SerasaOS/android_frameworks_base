@@ -533,9 +533,12 @@ public class CommandQueue extends IStatusBar.Stub implements
          */
         default void enterDesktop(int displayId) {}
 
-        default void toggleCameraFlash() {}
-
         default void killForegroundApp() {}
+
+        /**
+         * @see IStatusBar#toggleCameraFlash
+         */
+        default void toggleCameraFlash() {}
     }
 
     @VisibleForTesting
@@ -1453,18 +1456,18 @@ public class CommandQueue extends IStatusBar.Stub implements
     }
 
     @Override
-    public void toggleCameraFlash() {
-        synchronized (mLock) {
-            mHandler.removeMessages(MSG_TOGGLE_CAMERA_FLASH);
-            mHandler.sendEmptyMessage(MSG_TOGGLE_CAMERA_FLASH);
-        }
-    }
-
-    @Override
     public void killForegroundApp() {
         synchronized (mLock) {
             mHandler.removeMessages(MSG_KILL_FOREGROUND_APP);
             mHandler.sendEmptyMessage(MSG_KILL_FOREGROUND_APP);
+        }
+    }
+
+    @Override
+    public void toggleCameraFlash() {
+        synchronized (mLock) {
+            mHandler.removeMessages(MSG_TOGGLE_CAMERA_FLASH);
+            mHandler.sendEmptyMessage(MSG_TOGGLE_CAMERA_FLASH);
         }
     }
 
@@ -1968,8 +1971,8 @@ public class CommandQueue extends IStatusBar.Stub implements
                     boolean isImmersiveMode = args.argi2 != 0;
                     for (int i = 0; i < mCallbacks.size(); i++) {
                         mCallbacks.get(i).immersiveModeChanged(rootDisplayAreaId, isImmersiveMode);
-                    }
-                    break;
+		    }
+		    break;
                 case MSG_ENTER_DESKTOP: {
                     args = (SomeArgs) msg.obj;
                     int displayId = args.argi1;
