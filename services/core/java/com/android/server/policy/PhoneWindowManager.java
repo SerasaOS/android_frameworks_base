@@ -5192,6 +5192,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     // focus before processing the back event.
                     mWindowManagerInternal.moveFocusToTopEmbeddedWindowIfNeeded();
                     mBackKeyHandled = false;
+
+                    // Don't pass repeated events to app if user has custom long press action
+                    // set up in settings
+                    if (event.getRepeatCount() > 0 && hasLongPressOnBackBehavior()) {
+                        result &= ~ACTION_PASS_TO_USER;
+                    }
                 } else {
                     if (!hasLongPressOnBackBehavior()) {
                         mBackKeyHandled |= backKeyPress();
