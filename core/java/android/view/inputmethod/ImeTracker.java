@@ -498,11 +498,11 @@ public interface ImeTracker {
             final var token = IInputMethodManagerGlobalInvoker.onStart(tag, uid, type,
                     origin, reason, fromUser);
 
-            Log.i(TAG, token.mTag + ": onRequest" + (type == TYPE_SHOW ? "Show" : "Hide")
-                    + " at " + Debug.originToString(origin)
-                    + " reason " + InputMethodDebug.softInputDisplayReasonToString(reason)
-                    + " fromUser " + fromUser,
-                    mLogStackTrace ? new Throwable() : null);
+            // Log.i(TAG, token.mTag + ": onRequest" + (type == TYPE_SHOW ? "Show" : "Hide")
+            //         + " at " + Debug.originToString(origin)
+            //         + " reason " + InputMethodDebug.softInputDisplayReasonToString(reason)
+            //         + " fromUser " + fromUser,
+            //         mLogStackTrace ? new Throwable() : null);
             return token;
         }
 
@@ -511,9 +511,9 @@ public interface ImeTracker {
             if (token == null) return;
             IInputMethodManagerGlobalInvoker.onProgress(token.mBinder, phase);
 
-            if (mLogProgress) {
-                Log.i(TAG, token.mTag + ": onProgress at " + Debug.phaseToString(phase));
-            }
+            // if (mLogProgress) {
+            //     Log.i(TAG, token.mTag + ": onProgress at " + Debug.phaseToString(phase));
+            // }
         }
 
         @Override
@@ -521,13 +521,13 @@ public interface ImeTracker {
             if (token == null) return;
             IInputMethodManagerGlobalInvoker.onFailed(token, phase);
 
-            Log.i(TAG, token.mTag + ": onFailed at " + Debug.phaseToString(phase));
+            // Log.i(TAG, token.mTag + ": onFailed at " + Debug.phaseToString(phase));
         }
 
         @Override
         public void onTodo(@Nullable Token token, @Phase int phase) {
             if (token == null) return;
-            Log.i(TAG, token.mTag + ": onTodo at " + Debug.phaseToString(phase));
+            // Log.i(TAG, token.mTag + ": onTodo at " + Debug.phaseToString(phase));
         }
 
         @Override
@@ -535,7 +535,7 @@ public interface ImeTracker {
             if (token == null) return;
             IInputMethodManagerGlobalInvoker.onCancelled(token, phase);
 
-            Log.i(TAG, token.mTag + ": onCancelled at " + Debug.phaseToString(phase));
+            //Log.i(TAG, token.mTag + ": onCancelled at " + Debug.phaseToString(phase));
         }
 
         @Override
@@ -543,7 +543,7 @@ public interface ImeTracker {
             if (token == null) return;
             IInputMethodManagerGlobalInvoker.onShown(token);
 
-            Log.i(TAG, token.mTag + ": onShown");
+            // Log.i(TAG, token.mTag + ": onShown");
         }
 
         @Override
@@ -551,7 +551,7 @@ public interface ImeTracker {
             if (token == null) return;
             IInputMethodManagerGlobalInvoker.onHidden(token);
 
-            Log.i(TAG, token.mTag + ": onHidden");
+            // Log.i(TAG, token.mTag + ": onHidden");
         }
     };
 
