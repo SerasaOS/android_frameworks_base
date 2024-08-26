@@ -7447,14 +7447,8 @@ message MetricsEvent {
 
     // CustomSettings constant
     CUSTOM_SETTINGS = 1999;
-    STARFIELD = 2775;
+    MORBID = 2775;
     CUSTOM = 2772;
-
-    // Custom constant
-    CUSTOM = 2000;
-
-    // MorbidSettings constant
-    MORBID = 2001;
 
   }
 }
