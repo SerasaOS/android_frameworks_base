@@ -473,20 +473,6 @@ public final class PixelPropsUtils {
         return gmsUid == callingUid;
     }
 
-    private static boolean isCallerSafetyNet() {
-        return Arrays.stream(Thread.currentThread().getStackTrace())
-                        .anyMatch(elem -> elem.getClassName().toLowerCase()
-                            .contains("droidguard"));
-    }
-
-    public static void onEngineGetCertificateChain() {
-        // Check stack for SafetyNet or Play Integrity
-        if (isCallerSafetyNet() && !sIsExcluded) {
-            dlog("Blocked key attestation");
-            throw new UnsupportedOperationException();
-        }
-    }
-
     public static void dlog(String msg) {
         if (DEBUG) Log.d(TAG, "[" + sProcessName + "] " + msg);
     }
