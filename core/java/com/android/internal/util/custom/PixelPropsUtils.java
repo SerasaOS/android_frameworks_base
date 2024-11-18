@@ -50,7 +50,10 @@ import java.util.Random;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class PixelPropsUtils {
+/**
+ * @hide
+ */
+public final class PixelPropsUtils {
 
     private static final String PACKAGE_GMS = "com.google.android.gms";
     private static final String PROCESS_GMS_UNSTABLE = PACKAGE_GMS + ".unstable";
@@ -468,22 +471,6 @@ public class PixelPropsUtils {
             return false;
         }
         return gmsUid == callingUid;
-    }
-
-    private static boolean isCallerSafetyNet() {
-        return Arrays.stream(Thread.currentThread().getStackTrace())
-                        .anyMatch(elem -> elem.getClassName().toLowerCase()
-                            .contains("droidguard"));
-    }
-
-    public static void onEngineGetCertificateChain() {
-        if (!SystemProperties.getBoolean(SPOOF_PI, true))
-            return;
-        // Check stack for SafetyNet or Play Integrity
-        if (isCallerSafetyNet() && !sIsExcluded) {
-            dlog("Blocked key attestation");
-            throw new UnsupportedOperationException();
-        }
     }
 
     public static void dlog(String msg) {
