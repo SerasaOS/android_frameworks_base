@@ -477,8 +477,6 @@ public class PixelPropsUtils {
     }
 
     public static void onEngineGetCertificateChain() {
-        if (!SystemProperties.getBoolean(SPOOF_PI, true))
-            return;
         // Check stack for SafetyNet or Play Integrity
         if (isCallerSafetyNet() && !sIsExcluded) {
             dlog("Blocked key attestation");
